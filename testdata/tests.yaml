@@ -1,0 +1,41 @@
+- desc: simple
+  give: |
+    # Foo
+
+    Hello.
+
+    ## Subheading
+
+    Bar.
+  want: |
+    <h1 id="foo">Foo <a class="anchor" href="#foo">¶</a></h1>
+    <p>Hello.</p>
+    <h2 id="subheading">Subheading <a class="anchor" href="#subheading">¶</a></h2>
+    <p>Bar.</p>
+
+- desc: "add '#' before"
+  pos: before
+  text: '#'
+  give: |
+    # Foo
+
+    Hello.
+
+    ## Subheading
+
+    Bar.
+  want: |
+    <h1 id="foo"><a class="anchor" href="#foo">#</a> Foo</h1>
+    <p>Hello.</p>
+    <h2 id="subheading"><a class="anchor" href="#subheading">#</a> Subheading</h2>
+    <p>Bar.</p>
+
+- desc: custom attributes
+  attrs: {class: permalink}
+  give: |
+    # Foo
+
+    ## Bar
+  want: |
+    <h1 id="foo">Foo <a class="permalink" href="#foo">¶</a></h1>
+    <h2 id="bar">Bar <a class="permalink" href="#bar">¶</a></h2>
