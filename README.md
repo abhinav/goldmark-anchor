@@ -1,10 +1,13 @@
 # goldmark-anchor
 
+[![Go Reference](https://pkg.go.dev/badge/go.abhg.dev/goldmark/anchor.svg)](https://pkg.go.dev/go.abhg.dev/goldmark/anchor)
+[![CI](https://github.com/abhinav/goldmark-anchor/actions/workflows/ci.yml/badge.svg)](https://github.com/abhinav/goldmark-anchor/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/abhinav/goldmark-anchor/branch/main/graph/badge.svg?token=NnC4qdjuDW)](https://codecov.io/gh/abhinav/goldmark-anchor)
+
 goldmark-anchor is an extension for the [goldmark] Markdown parser
 that adds support for anchors next to all headers.
 
   [goldmark]: http://github.com/yuin/goldmark
-
 
 ## Installation
 
