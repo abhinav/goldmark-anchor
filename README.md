@@ -9,6 +9,10 @@ that adds support for anchors next to all headers.
 
   [goldmark]: http://github.com/yuin/goldmark
 
+**Demo**:
+A web-based demonstration of the extension is available at
+<https://abhinav.github.io/goldmark-anchor/demo/>.
+
 ## Installation
 
 ```bash
