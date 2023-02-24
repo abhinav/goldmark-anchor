@@ -119,6 +119,21 @@ func TestTransform(t *testing.T) {
 				},
 			},
 		},
+		{
+			desc: "no title yet",
+			give: []string{
+				"#",
+				"",
+			},
+			want: []*anchor{
+				{
+					ID:       "heading",
+					Level:    1,
+					Value:    defaultValue,
+					Position: After,
+				},
+			},
+		},
 	}
 
 	for _, tt := range tests {
@@ -208,11 +223,11 @@ func TestTransform_badIDAttribute(t *testing.T) {
 }
 
 func findAnchor(h *ast.Heading) (an *Node, pos Position) {
-	if an, ok := h.FirstChild().(*Node); ok {
-		return an, Before
-	}
 	if an, ok := h.LastChild().(*Node); ok {
 		return an, After
+	}
+	if an, ok := h.FirstChild().(*Node); ok {
+		return an, Before
 	}
 	return nil, 0
 }
