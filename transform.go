@@ -196,6 +196,12 @@ func (t *transform) transform(h *ast.Heading) {
 		n.SetAttributeString(name, []byte(value))
 	}
 
+	// If the header has no children yet, just append the anchor.
+	if h.ChildCount() == 0 {
+		h.AppendChild(h, n)
+		return
+	}
+
 	if t.Position == Before {
 		h.InsertBefore(h, h.FirstChild(), n)
 	} else {
