@@ -129,7 +129,7 @@ var _ parser.ASTTransformer = (*Transformer)(nil)
 //
 // This method is typically called by Goldmark
 // and should not need to be invoked directly.
-func (t *Transformer) Transform(doc *ast.Document, reader text.Reader, pctx parser.Context) {
+func (t *Transformer) Transform(doc *ast.Document, _ text.Reader, _ parser.Context) {
 	tr := transform{
 		Attributer: t.Attributer,
 		Position:   t.Position,
