@@ -23,7 +23,7 @@ func (r *Renderer) RegisterFuncs(reg renderer.NodeRendererFuncRegisterer) {
 
 // RenderNode renders an anchor node.
 // Goldmark will invoke this method when it encounters a Node.
-func (r *Renderer) RenderNode(w util.BufWriter, src []byte, node ast.Node, entering bool) (ast.WalkStatus, error) {
+func (r *Renderer) RenderNode(w util.BufWriter, _ []byte, node ast.Node, entering bool) (ast.WalkStatus, error) {
 	// If position is Before, we need to add the anchor when entering;
 	// otherwise when exiting.
 	if (r.Position == Before) != entering {

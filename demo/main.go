@@ -17,7 +17,7 @@ func main() {
 	select {}
 }
 
-func formatMarkdown(this js.Value, args []js.Value) any {
+func formatMarkdown(_ js.Value, args []js.Value) any {
 	input := args[0].Get("markdown").String()
 	var pos anchor.Position
 	switch s := args[0].Get("position").String(); s {
