@@ -16,10 +16,8 @@ func TestNode_Kind(t *testing.T) {
 	assert.Equal(t, Kind, new(Node).Kind())
 }
 
+//nolint:paralleltest // we hijack stdout
 func TestNode_Dump(t *testing.T) {
-	// Not parallel
-	// because we hijack stdout.
-
 	getStdout := hijackStdout(t)
 	(&Node{
 		ID:    []byte("foo-bar"),
@@ -46,7 +44,8 @@ func hijackStdout(t testing.TB) func() string {
 	var buff bytes.Buffer
 	go func() {
 		defer close(done)
-		io.Copy(&buff, r)
+		_, err := io.Copy(&buff, r)
+		assert.NoError(t, err)
 	}()
 
 	require.NoError(t, err)

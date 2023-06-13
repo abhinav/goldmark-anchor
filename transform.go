@@ -142,7 +142,8 @@ func (t *Transformer) Transform(doc *ast.Document, _ text.Reader, _ parser.Conte
 		tr.Texter = _defaultTexter
 	}
 
-	ast.Walk(doc, tr.Visit)
+	_ = ast.Walk(doc, tr.Visit)
+	// Visit always returns a nil error.
 }
 
 // transform holds state for a single transformation traversal.
