@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/ast"
 	"github.com/yuin/goldmark/parser"
@@ -156,7 +157,7 @@ func TestTransform(t *testing.T) {
 			got := p.Parse(text.NewReader(src))
 
 			var gotAnchors []*anchor
-			ast.Walk(got, func(n ast.Node, enter bool) (ast.WalkStatus, error) {
+			err := ast.Walk(got, func(n ast.Node, enter bool) (ast.WalkStatus, error) {
 				if !enter {
 					return ast.WalkContinue, nil
 				}
@@ -181,6 +182,7 @@ func TestTransform(t *testing.T) {
 
 				return ast.WalkSkipChildren, nil
 			})
+			require.NoError(t, err)
 
 			assert.Equal(t, tt.want, gotAnchors)
 		})
@@ -200,11 +202,12 @@ func TestTransform_noHeadingIDs(t *testing.T) {
 	src := []byte("# Foo\n\n# Bar\n\n# Baz\n")
 	got := p.Parse(text.NewReader(src))
 
-	ast.Walk(got, func(n ast.Node, entering bool) (ast.WalkStatus, error) {
+	err := ast.Walk(got, func(n ast.Node, entering bool) (ast.WalkStatus, error) {
 		an, ok := n.(*Node)
 		assert.False(t, ok, "unexpected Node: %#v", an)
 		return ast.WalkContinue, nil
 	})
+	require.NoError(t, err)
 }
 
 func TestTransform_badIDAttribute(t *testing.T) {

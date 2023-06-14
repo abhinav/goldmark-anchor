@@ -37,18 +37,20 @@ func (r *Renderer) RenderNode(w util.BufWriter, _ []byte, node ast.Node, enterin
 
 	// Add leading/trailing ' ' depending on position.
 	if r.Position == Before {
-		defer w.WriteByte(' ')
+		defer func() {
+			_ = w.WriteByte(' ')
+		}()
 	} else {
-		w.WriteByte(' ')
+		_ = w.WriteByte(' ')
 	}
 
-	w.WriteString("<a")
+	_, _ = w.WriteString("<a")
 	html.RenderAttributes(w, node, nil)
-	w.WriteString(` href="#`)
-	w.Write(util.EscapeHTML(n.ID))
-	w.WriteString(`">`)
-	w.Write(util.EscapeHTML(n.Value))
-	w.WriteString("</a>")
+	_, _ = w.WriteString(` href="#`)
+	_, _ = w.Write(util.EscapeHTML(n.ID))
+	_, _ = w.WriteString(`">`)
+	_, _ = w.Write(util.EscapeHTML(n.Value))
+	_, _ = w.WriteString("</a>")
 
 	return ast.WalkContinue, nil
 }
