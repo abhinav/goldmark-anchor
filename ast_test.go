@@ -16,7 +16,6 @@ func TestNode_Kind(t *testing.T) {
 	assert.Equal(t, Kind, new(Node).Kind())
 }
 
-//nolint:paralleltest // we hijack stdout
 func TestNode_Dump(t *testing.T) {
 	getStdout := hijackStdout(t)
 	(&Node{
