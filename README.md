@@ -173,4 +173,4 @@ heading IDs next to each heading.
 
 ## License
 
-This software is made available under the MIT license.
+This software is made available under the BSD3 license.
