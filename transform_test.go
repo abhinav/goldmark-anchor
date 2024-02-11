@@ -202,7 +202,7 @@ func TestTransform_noHeadingIDs(t *testing.T) {
 	src := []byte("# Foo\n\n# Bar\n\n# Baz\n")
 	got := p.Parse(text.NewReader(src))
 
-	err := ast.Walk(got, func(n ast.Node, entering bool) (ast.WalkStatus, error) {
+	err := ast.Walk(got, func(n ast.Node, _ bool) (ast.WalkStatus, error) {
 		an, ok := n.(*Node)
 		assert.False(t, ok, "unexpected Node: %#v", an)
 		return ast.WalkContinue, nil
