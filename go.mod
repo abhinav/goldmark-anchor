@@ -3,8 +3,8 @@ module go.abhg.dev/goldmark/anchor
 go 1.20
 
 require (
-	github.com/stretchr/testify v1.8.1
-	github.com/yuin/goldmark v1.5.3
+	github.com/stretchr/testify v1.9.0
+	github.com/yuin/goldmark v1.7.4
 	gopkg.in/yaml.v3 v3.0.1
 )
 
