@@ -14,11 +14,12 @@ func TestRenderer(t *testing.T) {
 	t.Parallel()
 
 	tests := []struct {
-		desc  string
-		give  Node
-		attrs map[string]string
-		pos   Position
-		want  string
+		desc   string
+		give   Node
+		attrs  map[string]string
+		pos    Position
+		want   string
+		unsafe bool
 	}{
 		{desc: "empty ID"},
 		{
@@ -47,6 +48,25 @@ func TestRenderer(t *testing.T) {
 			attrs: map[string]string{"foo": "bar"},
 			want:  ` <a foo="bar" href="#hello">#</a>`,
 		},
+		{
+			desc: "attributes",
+			give: Node{
+				ID:    []byte("hello"),
+				Value: []byte("<unsafe></unsafe>"),
+			},
+			attrs: map[string]string{"foo": "bar"},
+			want:  ` <a foo="bar" href="#hello">&lt;unsafe&gt;&lt;/unsafe&gt;</a>`,
+		},
+		{
+			desc: "attributes",
+			give: Node{
+				ID:    []byte("hello"),
+				Value: []byte("<unsafe></unsafe>"),
+			},
+			attrs:  map[string]string{"foo": "bar"},
+			want:   ` <a foo="bar" href="#hello"><unsafe></unsafe></a>`,
+			unsafe: true,
+		},
 	}
 
 	for _, tt := range tests {
@@ -56,6 +76,7 @@ func TestRenderer(t *testing.T) {
 
 			anchorR := Renderer{
 				Position: tt.pos,
+				Unsafe:   tt.unsafe,
 			}
 			r := renderer.NewRenderer(
 				renderer.WithNodeRenderers(
