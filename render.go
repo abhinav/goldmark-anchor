@@ -12,6 +12,9 @@ type Renderer struct {
 	// Position specifies where in the header text
 	// the anchor is being added.
 	Position Position
+	// Unsafe specifies whether the Texter values will be HTML escaped or
+	// not.
+	Unsafe bool
 }
 
 var _ renderer.NodeRenderer = (*Renderer)(nil)
@@ -49,7 +52,11 @@ func (r *Renderer) RenderNode(w util.BufWriter, _ []byte, node ast.Node, enterin
 	_, _ = w.WriteString(` href="#`)
 	_, _ = w.Write(util.EscapeHTML(n.ID))
 	_, _ = w.WriteString(`">`)
-	_, _ = w.Write(util.EscapeHTML(n.Value))
+	if r.Unsafe {
+		_, _ = w.Write(n.Value)
+	} else {
+		_, _ = w.Write(util.EscapeHTML(n.Value))
+	}
 	_, _ = w.WriteString("</a>")
 
 	return ast.WalkContinue, nil
