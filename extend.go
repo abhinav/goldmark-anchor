@@ -35,6 +35,13 @@ type Extender struct {
 	//
 	// Defaults to adding a 'class="anchor"' attribute.
 	Attributer Attributer
+
+	// Unsafe specifies whether the Texter values will be escaped or not.
+	// Setting this to true can lead to HTML injection if you don't handle
+	// Texter values with care.
+	//
+	// Defaults to false.
+	Unsafe bool
 }
 
 var _ goldmark.Extender = (*Extender)(nil)
@@ -54,6 +61,7 @@ func (e *Extender) Extend(md goldmark.Markdown) {
 		renderer.WithNodeRenderers(
 			util.Prioritized(&Renderer{
 				Position: e.Position,
+				Unsafe:   e.Unsafe,
 			}, 100),
 		),
 	)
