@@ -1,6 +1,8 @@
 module go.abhg.dev/goldmark/anchor/demo
 
-go 1.20
+go 1.23
+
+toolchain go1.24.0
 
 replace go.abhg.dev/goldmark/anchor => ../
 
