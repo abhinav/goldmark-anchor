@@ -8,5 +8,5 @@ replace go.abhg.dev/goldmark/anchor => ../
 
 require (
 	github.com/yuin/goldmark v1.7.8
-	go.abhg.dev/goldmark/anchor v0.1.1
+	go.abhg.dev/goldmark/anchor v0.2.0
 )
