@@ -6,7 +6,7 @@ toolchain go1.24.2
 
 require (
 	github.com/stretchr/testify v1.10.0
-	github.com/yuin/goldmark v1.7.8
+	github.com/yuin/goldmark v1.7.10
 	golang.org/x/tools v0.32.0
 	gopkg.in/yaml.v3 v3.0.1
 )
