@@ -7,6 +7,6 @@ toolchain go1.24.3
 replace go.abhg.dev/goldmark/anchor => ../
 
 require (
-	github.com/yuin/goldmark v1.7.11
+	github.com/yuin/goldmark v1.7.12
 	go.abhg.dev/goldmark/anchor v0.2.0
 )
