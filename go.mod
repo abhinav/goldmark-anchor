@@ -2,7 +2,7 @@ module go.abhg.dev/goldmark/anchor
 
 go 1.23.0
 
-toolchain go1.25.0
+toolchain go1.25.1
 
 require (
 	github.com/stretchr/testify v1.11.1
