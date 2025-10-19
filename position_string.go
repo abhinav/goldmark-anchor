@@ -17,8 +17,9 @@ const _Position_name = "AfterBefore"
 var _Position_index = [...]uint8{0, 5, 11}
 
 func (i Position) String() string {
-	if i < 0 || i >= Position(len(_Position_index)-1) {
+	idx := int(i) - 0
+	if i < 0 || idx >= len(_Position_index)-1 {
 		return "Position(" + strconv.FormatInt(int64(i), 10) + ")"
 	}
-	return _Position_name[_Position_index[i]:_Position_index[i+1]]
+	return _Position_name[_Position_index[idx]:_Position_index[idx+1]]
 }
