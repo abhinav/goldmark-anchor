@@ -2,19 +2,19 @@ module go.abhg.dev/goldmark/anchor
 
 go 1.24.0
 
-toolchain go1.25.6
+toolchain go1.26.1
 
 require (
 	github.com/stretchr/testify v1.11.1
 	github.com/yuin/goldmark v1.7.16
-	golang.org/x/tools v0.41.0
+	golang.org/x/tools v0.42.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	golang.org/x/mod v0.32.0 // indirect
+	golang.org/x/mod v0.33.0 // indirect
 	golang.org/x/sync v0.19.0 // indirect
 )
 
